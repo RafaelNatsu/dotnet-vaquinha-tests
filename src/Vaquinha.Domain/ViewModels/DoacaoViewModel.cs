@@ -1,4 +1,6 @@
-﻿namespace Vaquinha.Domain.ViewModels
+﻿using System.ComponentModel;
+
+namespace Vaquinha.Domain.ViewModels
 {
     public class DoacaoViewModel
     {
@@ -7,5 +9,8 @@
         public PessoaViewModel DadosPessoais { get; set; }
         public EnderecoViewModel EnderecoCobranca { get; set; }
         public CartaoCreditoViewModel FormaPagamento { get; set; }
+        
+        [DisplayName("Aceita pagar Taxa de transação")]
+        public bool AceitaTaxa { get; set; }
     }
 }

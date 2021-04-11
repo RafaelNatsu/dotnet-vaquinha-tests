@@ -36,6 +36,38 @@ namespace Vaquinha.Unit.Tests.DomainTests
             valido.Should().BeTrue(because: "os campos foram preenchidos corretamente");
             doacao.ErrorMessages.Should().BeEmpty();
         }
+        
+        [Fact]
+        [Trait("Doacao", "Doacao_AceitaPagarTaxa_DoacaoValida")]
+        public void Doacao_AceitaPagarTaxa_DoacaoValida()
+        {           
+            // Arrange
+            var doacao = _doacaoFixture.DoacaoValida(aceitaTaxa: true);
+            doacao.AdicionarEnderecoCobranca(_enderecoFixture.EnderecoValido());
+            doacao.AdicionarFormaPagamento(_cartaoCreditoFixture.CartaoCreditoValido());
+
+            // Act
+            var valido = doacao.Valido();
+
+            // Assert
+            doacao.Valor.Should().Be(6,because: "valor com taxa de 20%");
+        }
+
+        [Fact]
+        [Trait("Doacao", "Doacao_ForaDoTempoDeCampanha_DoacaoInvalida")]
+        public void Doacao_ForaDoTempoDeCampanha_DoacaoInvalida()
+        {           
+            // Arrange
+            var doacao = _doacaoFixture.DoacaoValida();
+            doacao.AdicionarEnderecoCobranca(_enderecoFixture.EnderecoValido());
+            doacao.AdicionarFormaPagamento(_cartaoCreditoFixture.CartaoCreditoValido());
+
+            // Act
+            var valido = doacao.Valido();
+
+            // Assert
+            doacao.DataHora.Should().BeOnOrBefore(doacao.FimCampanha, because: "Fora do tempo de campanha");
+        }
 
         [Fact]
         [Trait("Doacao", "Doacao_DadosPessoaisInvalidos_DoacaoInvalida")]
@@ -90,7 +122,7 @@ namespace Vaquinha.Unit.Tests.DomainTests
         public void Doacao_ValoresDoacaoMaiorLimite_DoacaoInvalida(double valorDoacao)
         {
             // Arrange
-            const bool EXCEDER_MAX_VALOR_DOACAO = true;
+            //const bool EXCEDER_MAX_VALOR_DOACAO = true;
             var doacao = _doacaoFixture.DoacaoValida(false, valorDoacao);
             doacao.AdicionarEnderecoCobranca(_enderecoFixture.EnderecoValido());
             doacao.AdicionarFormaPagamento(_cartaoCreditoFixture.CartaoCreditoValido());

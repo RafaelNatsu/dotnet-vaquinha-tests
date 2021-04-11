@@ -85,5 +85,7 @@ namespace Vaquinha.Domain.ViewModels
 
             return descricao;
         }
+
+
     }
 }

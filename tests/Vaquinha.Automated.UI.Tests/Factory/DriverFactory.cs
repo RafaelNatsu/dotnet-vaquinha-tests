@@ -15,10 +15,14 @@ namespace Vaquinha.AutomatedUITests
         {
             // Inicializa o browser utilizando o ChromeDriver que está no caminho /usr/share/applications/
             //ChromeDriverService service = ChromeDriverService.CreateDefaultService("/usr/share/applications/");
-            FirefoxDriverService service = FirefoxDriverService.CreateDefaultService("/usr/share/applications/");
+            //FirefoxDriverService service = FirefoxDriverService.CreateDefaultService("/usr/share/applications/");
+            
+            //apenas para teste coloquei em uma pasta na raiz chamado de webdriver
+            FirefoxDriverService service = FirefoxDriverService.CreateDefaultService("C:\\Users\\Central\\source\\projetos\\dotnet-vaquinha-tests\\webdriver\\");
             
             // Faz criação de porta para abrir o browser.
-            service.Port = new Random().Next(64000, 64800);
+            service.Port = 44317;
+            //new Random().Next(64000, 64800);
             
             /*ChromeOptions options = new ChromeOptions();
             options.AddArgument("headless");
