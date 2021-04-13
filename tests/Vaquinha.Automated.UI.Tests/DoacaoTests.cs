@@ -33,7 +33,7 @@ namespace Vaquinha.AutomatedUITests
 		public void DoacaoUI_AcessoTelaHome()
 		{
 			// Arrange
-			_driverFactory.NavigateToUrl("https://127.0.0.1/");
+			_driverFactory.NavigateToUrl("#");
 			_driver = _driverFactory.GetWebDriver();
 
 			// Act
@@ -50,7 +50,7 @@ namespace Vaquinha.AutomatedUITests
 			var doacao = _doacaoFixture.DoacaoValida();
             doacao.AdicionarEnderecoCobranca(_enderecoFixture.EnderecoValido());
             doacao.AdicionarFormaPagamento(_cartaoCreditoFixture.CartaoCreditoValido());
-			_driverFactory.NavigateToUrl("https://127.0.0.1/");
+			_driverFactory.NavigateToUrl("#");
 			_driver = _driverFactory.GetWebDriver();
 
 			//Act
