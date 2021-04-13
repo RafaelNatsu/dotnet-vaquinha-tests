@@ -21,7 +21,7 @@ Foi retirado o endereço da aplicação que havia feito deploy para teste automa
 
 ## Rafael Natsu
 
-[Sobre o autor](https://about.me/rafaelyukio)
+[Sobre o autor](https://about.me/rafaelyukio)  
 [Linkedin](https://www.linkedin.com/in/rafael-yukio-natsu-58536b171/)
 
 ## Slides
